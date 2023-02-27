@@ -7,7 +7,7 @@ import { SelectPage } from '@/shared/types';
 
 function App() {
 
-  const [selectPage, setSelectPage] = useState<SelectPage>();
+  const [selectPage, setSelectPage] = useState<SelectPage>(SelectPage.Home);
 
   return (
 
