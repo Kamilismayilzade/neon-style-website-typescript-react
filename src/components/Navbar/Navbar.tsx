@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {Bars4Icon, XMarkIcon} from '@heroicons/react/24/solid'
 import Logo from '@/assets/logo.png'
 import Link from './Link'
 import { SelectPage } from '@/shared/types'
+import useMediaQuery from '@/hooks/useMediaQuery'
 
 type NavbarProps = {
 
@@ -13,7 +14,10 @@ type NavbarProps = {
 
 const Navbar = ({selectPage, setSelectPage}: NavbarProps) => {
 
-  const flexBetween = 'flex items-center justify-between'
+  const flexBetween = 'flex items-center justify-between';
+  const isAboveMediumScreen = useMediaQuery('(min-width: 1060px)');
+
+  const [menuToggle, setMenuToggle] = useState<boolean>(false);
 
   return (
 
@@ -27,7 +31,7 @@ const Navbar = ({selectPage, setSelectPage}: NavbarProps) => {
 
                     <img src={Logo} alt="logo" style={{ width: '4rem', borderRadius: '50%', }} />
 
-                    <div className={`${flexBetween} w-full`}>
+                    { isAboveMediumScreen ? (<div className={`${flexBetween} w-full`}>
 
                         <div className={`${flexBetween} gap-10 text-sm`}>
                             <Link page='Home' selectPage={selectPage} setSelectPage = {setSelectPage} />
@@ -38,10 +42,10 @@ const Navbar = ({selectPage, setSelectPage}: NavbarProps) => {
 
                         <div className={`${flexBetween} gap-6`}>
                             <p>Sign In</p>
-                            <button>Get Started</button>
+                            <ActionButton setSelectPage = {setSelectPage} >Get Started</ActionButton>
                         </div>
 
-                    </div>
+                    </div>) : (<button className='rounded-full p-2 bg-amber-500'  onClick={ ()=> setMenuToggle(!menuToggle) } > <Bars4Icon className='h-7 w-7 text-white' /> </button>) }
 
                 </div>
 
