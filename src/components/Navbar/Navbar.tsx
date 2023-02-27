@@ -54,6 +54,40 @@ const Navbar = ({selectPage, setSelectPage}: NavbarProps) => {
 
         </div>
 
+
+        {/* Mobile menu */}
+
+
+        { !isAboveMediumScreen && menuToggle && ( 
+
+            <div className='fixed right-0 bottom-0 z-200 h-full w-[300px] drop-shadow-xl bg-zinc-900'>
+
+                <div className='flex justify-end p-10'>
+                    <button onClick={ ()=> setMenuToggle(!menuToggle) } >
+                        <XMarkIcon className='h-7 w-7 text-white' />
+                    </button>
+                </div>
+
+
+                {/* Menu */}
+
+                <div className=' ml-[33%] flex flex-col gap-10 text-2xl'>
+                    <Link page='Home' selectPage={selectPage} setSelectPage = {setSelectPage} />
+                    <Link page='Benefits' selectPage={selectPage} setSelectPage = {setSelectPage} />
+                    <Link page='Our Menu' selectPage={selectPage} setSelectPage = {setSelectPage} />
+                    <Link page='Contact' selectPage={selectPage} setSelectPage = {setSelectPage} />
+                </div>
+
+
+            </div>
+
+         ) }
+
+
+        
+
+
+
     </nav>
 
   )
