@@ -2,11 +2,12 @@ import React from 'react'
 import {Bars4Icon, XMarkIcon} from '@heroicons/react/24/solid'
 import Logo from '@/assets/logo.png'
 import Link from './Link'
+import { SelectPage } from '@/shared/types'
 
 type NavbarProps = {
 
-    selectPage: string,
-    setSelectPage: (value: string)=> void,
+    selectPage: SelectPage,
+    setSelectPage: (value: SelectPage)=> void,
 
 }
 
