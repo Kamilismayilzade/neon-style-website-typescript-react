@@ -10,21 +10,23 @@ type NavbarProps = {
 
     selectPage: SelectPage,
     setSelectPage: (value: SelectPage)=> void,
+    topPage: boolean,
 
 }
 
-const Navbar = ({selectPage, setSelectPage}: NavbarProps) => {
+const Navbar = ({selectPage, setSelectPage, topPage}: NavbarProps) => {
 
   const flexBetween = 'flex items-center justify-between';
   const isAboveMediumScreen = useMediaQuery('(min-width: 1060px)');
 
   const [menuToggle, setMenuToggle] = useState<boolean>(false);
+  const navbarBackground = topPage ? '' : 'bg-slate-900 drop-shadow-2xl';
 
   return (
 
     <nav>
 
-        <div className={`${flexBetween} fixed top-0 z-100 w-full py-4 border-b-2 border-purple-400`}>
+        <div className={` ${navbarBackground} ${flexBetween} fixed top-0 z-100 w-full py-4 border-b-2 border-purple-400`}>
 
             <div className={`${flexBetween} mx-auto w-5/6`}>
 
@@ -34,7 +36,7 @@ const Navbar = ({selectPage, setSelectPage}: NavbarProps) => {
 
                     { isAboveMediumScreen ? (<div className={`${flexBetween} w-full`}>
 
-                        <div className={`${flexBetween} gap-10 text-sm`}>
+                        <div className={`${flexBetween} gap-10 text-xl`}>
                             <Link page='Home' selectPage={selectPage} setSelectPage = {setSelectPage} />
                             <Link page='Benefits' selectPage={selectPage} setSelectPage = {setSelectPage} />
                             <Link page='Our Menu' selectPage={selectPage} setSelectPage = {setSelectPage} />
